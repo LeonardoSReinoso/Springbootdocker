@@ -23,9 +23,9 @@ jobs:
 
     - name: Deploy to minikube
       run: |
-        kubectl apply -f ./minikube/springapp-deployment.yaml -n $NAMESAPACE
-        kubectl apply -f ./minikube/springapp-service.yaml -n $NAMESAPACE
-        kubectl apply -f ./minikube/springapp-ingress.yaml -n $NAMESAPACE
+        kubectl apply -f ./minikube/springapp-deployment.yaml -n $NAMESPACE
+        kubectl apply -f ./minikube/springapp-service.yaml -n $NAMESPACE
+        kubectl apply -f ./minikube/springapp-ingress.yaml -n $NAMESPACE
 
     - name: Test service URLs
       run: |
