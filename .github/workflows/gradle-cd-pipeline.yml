@@ -2,7 +2,7 @@ name: Deploy to Minikube
 on: 
     workflow_dispatch:
 env:
-    NAMESPACE: DEMO
+    NAMESPACE: demo
 
 jobs:
   job:
