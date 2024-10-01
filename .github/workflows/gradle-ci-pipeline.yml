@@ -1,4 +1,4 @@
-name: BuildSpringApp
+name: Build SpringApp
 on:
    workflow_dispatch:
 

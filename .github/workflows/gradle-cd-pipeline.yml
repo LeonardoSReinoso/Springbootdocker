@@ -1,5 +1,4 @@
 name: Deploy to Minikube 
-
 on: 
     workflow_dispatch:
 env:
@@ -23,6 +22,7 @@ jobs:
 
     - name: Deploy to minikube
       run: |
+        kubectl apply -f ./minikube/springapp-ns.yaml
         kubectl apply -f ./minikube/springapp-deployment.yaml -n $NAMESPACE
         kubectl apply -f ./minikube/springapp-service.yaml -n $NAMESPACE
         kubectl apply -f ./minikube/springapp-ingress.yaml -n $NAMESPACE
