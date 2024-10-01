@@ -29,5 +29,5 @@ jobs:
 
     - name: Test service URLs
       run: |
-          minikube service list
-          minikube service springboot-app-service --url
+          minikube service list -n $NAMESPACE
+          minikube service springboot-app-service --url -n $NAMESPACE

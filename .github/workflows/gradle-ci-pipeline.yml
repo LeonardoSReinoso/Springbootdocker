@@ -1,4 +1,4 @@
-name: Build SpringApp
+name: Build SpringApp docker image
 on:
    workflow_dispatch:
 
