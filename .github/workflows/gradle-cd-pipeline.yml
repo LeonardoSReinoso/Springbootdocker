@@ -1,9 +1,8 @@
-name: Deploy to Minikube 
-
+name: Deploy SpringApp to Minikube 
 on: 
     workflow_dispatch:
 env:
-    NAMESPACE: DEMO
+    NAMESPACE: demo
 
 jobs:
   job:
@@ -12,7 +11,6 @@ jobs:
     name: Deploy to minikube
 
     steps:
-
     - uses: actions/checkout@v4
 
     - name: Start minikube
@@ -23,11 +21,12 @@ jobs:
 
     - name: Deploy to minikube
       run: |
-        kubectl apply -f ./minikube/springapp-deployment.yaml -n $NAMESAPACE
-        kubectl apply -f ./minikube/springapp-service.yaml -n $NAMESAPACE
-        kubectl apply -f ./minikube/springapp-ingress.yaml -n $NAMESAPACE
+        kubectl apply -f ./minikube/springapp-ns.yaml
+        kubectl apply -f ./minikube/springapp-deployment.yaml -n $NAMESPACE
+        kubectl apply -f ./minikube/springapp-service.yaml -n $NAMESPACE
+        kubectl apply -f ./minikube/springapp-ingress.yaml -n $NAMESPACE
 
     - name: Test service URLs
       run: |
           minikube service list
-          minikube service springboot-app-service --url
+          minikube service springboot-app-service --url -n $NAMESPACE

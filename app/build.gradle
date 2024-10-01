@@ -26,6 +26,8 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
+    implementation 'org.springframework.boot:spring-boot-starter-ws:1.4.7.RELEASE'
+
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -44,3 +46,4 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
