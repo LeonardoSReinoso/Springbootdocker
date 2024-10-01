@@ -2,7 +2,9 @@ name: Deploy to Minikube
 
 on: 
     workflow_dispatch:
-  
+env:
+    NAMESPACE: DEMO
+
 jobs:
   job:
     runs-on: ubuntu-latest
@@ -20,12 +22,10 @@ jobs:
       run: kubectl get pods -A 
 
     - name: Deploy to minikube
-      run: 
-        kubectl apply -f ./minikube/springapp-deployment.yaml
-
-        kubectl apply -f ./minikube/springapp-service.yaml
-
-        kubectl apply -f ./minikube/springapp-ingress.yaml
+      run: |
+        kubectl apply -f ./minikube/springapp-deployment.yaml -n $NAMESAPACE
+        kubectl apply -f ./minikube/springapp-service.yaml -n $NAMESAPACE
+        kubectl apply -f ./minikube/springapp-ingress.yaml -n $NAMESAPACE
 
     - name: Test service URLs
       run: |
