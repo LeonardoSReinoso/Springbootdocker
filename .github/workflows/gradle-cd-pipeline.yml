@@ -1,4 +1,4 @@
-name: Deploy to Minikube 
+name: Deploy SpringApp to Minikube 
 on: 
     workflow_dispatch:
 env:
