@@ -1,0 +1,33 @@
+name: Deploy to Minikube 
+
+on: 
+    workflow_dispatch:
+env:
+    NAMESPACE: DEMO
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+
+    name: Deploy to minikube
+
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - name: Start minikube
+      uses: medyagh/setup-minikube@master
+
+    - name: Check cluster
+      run: kubectl get pods -A 
+
+    - name: Deploy to minikube
+      run: |
+        kubectl apply -f ./minikube/springapp-deployment.yaml -n $NAMESAPACE
+        kubectl apply -f ./minikube/springapp-service.yaml -n $NAMESAPACE
+        kubectl apply -f ./minikube/springapp-ingress.yaml -n $NAMESAPACE
+
+    - name: Test service URLs
+      run: |
+          minikube service list
+          minikube service springboot-app-service --url
