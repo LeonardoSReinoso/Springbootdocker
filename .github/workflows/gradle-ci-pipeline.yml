@@ -12,6 +12,9 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         
+        - name: checkIP
+          run: curl https://api.ipify.org
+        
         - uses: actions/setup-java@v4
           with:
               distribution: 'temurin'
