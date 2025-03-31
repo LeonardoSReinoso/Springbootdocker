@@ -11,6 +11,13 @@ jobs:
 
       steps:
         - uses: actions/checkout@v4
+
+        #TEST
+        - uses: actions/checkout@v4
+          with:
+             repository: LeonardoSReinoso/App-build-pipeline
+             token: ${{ secrets.GITHUB_TOKEN }}
+             path: repo2
         
         - name: checkIP
           run: curl https://api.ipify.org
